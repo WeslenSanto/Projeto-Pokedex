@@ -1,51 +1,136 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap');
 
-*{
-               margin: 0;
-               padding: 0;
-               box-sizing: border-box;
-               font-family: 'Press Start 2P', cursive;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Oxanium', cursive;
 }
 
-
-body{
-               text-align: center; 
-               background: linear-gradient(to bottom, #6ab7f5, #fff);
-               min-height: 100vh;
+body {
+  background: linear-gradient(to bottom, #6ab7ff, #e0f2fe);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-
-main{
-               background-color: #6ab7f5;
-               display: inline-block;
-               margin-top: 2%;
-               padding: 1px;
-               position: relative;
+/* O container 'main' vira o elemento pai relativo */
+main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 425px;
+  margin-top: 60px; /* Espaço na parte superior para o campo de busca */
 }
 
-.pokedex-image{
-               width: 100%;
-               max-width: 425px;
+/* 1. GAMBIARRA CSS: Esconde a tag <img> quebrada da Pokédex lá embaixo */
+main > img:not(.pokemon__image) {
+  display: none !important;
 }
 
-.pokemon-image{
-               position: absolute;
-               bottom: 55%;
-               left: 50%;
-               transform: translateX(-50%) translateY(20%);
-               height: 18%;
+/* 2. Desenha a imagem da Pokédex usando background-image no main */
+main::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 600px;
+  background-image: url('../img/pokedeximage2.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.pokemon-data{
-               position: absolute;
-               font-weight: 15;
-               color: #aaa;
-               top:61%;
-               right: 10%;
-               font-size: clamp(8px, 5vw, 25px);
+/* 3. CAMPO DE PESQUISA: Movido para cima da Pokédex via order/posição absoluta */
+.form,
+input[type="search"],
+.input__search {
+  position: absolute;
+  top: -55px;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
-.pokemon__name{
-               color:#3a444d;
-               text-transform:capitalize;
-}              
+.input__search,
+input[type="search"] {
+  padding: 12px 16px;
+  outline: none;
+  border: 2px solid #333;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+/* 4. SPRITE DO POKÉMON: Centralizada dentro da tela cinza */
+.pokemon__image {
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 120px;
+  object-fit: contain;
+  z-index: 5;
+}
+
+/* 5. NOME E NÚMERO DO POKÉMON: Posicionado dentro da tela cinza (parte inferior) */
+.pokemon__data,
+h1 {
+  position: absolute;
+  top: 265px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: 700;
+  color: #222;
+  font-size: 1.2rem;
+  width: 80%;
+  text-align: center;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.pokemon__name {
+  text-transform: capitalize;
+}
+
+/* 6. BOTÕES PREV / NEXT: Posicionados no painel inferior do aparelho */
+.buttons,
+div:has(.button) {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+  z-index: 5;
+}
+
+.button,
+button {
+  width: 50%;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  background-color: #444;
+  box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.button:active,
+button:active {
+  box-shadow: inset -2px 3px 0 #222;
+  transform: translateY(2px);
+}

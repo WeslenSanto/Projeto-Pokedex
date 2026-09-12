@@ -16,7 +16,7 @@ body {
   padding: 20px;
 }
 
-/* O container 'main' vira o elemento pai relativo */
+
 main {
   position: relative;
   display: flex;
@@ -24,15 +24,15 @@ main {
   align-items: center;
   width: 100%;
   max-width: 425px;
-  margin-top: 60px; /* Espaço na parte superior para o campo de busca */
+  margin-top: 60px; 
 }
 
-/* 1. GAMBIARRA CSS: Esconde a tag <img> quebrada da Pokédex lá embaixo */
+
 main > img:not(.pokemon__image) {
   display: none !important;
 }
 
-/* 2. Desenha a imagem da Pokédex usando background-image no main */
+
 main::before {
   content: '';
   display: block;
@@ -44,7 +44,7 @@ main::before {
   background-position: center;
 }
 
-/* 3. CAMPO DE PESQUISA: Movido para cima da Pokédex via order/posição absoluta */
+
 .form,
 input[type="search"],
 .input__search {
@@ -68,7 +68,7 @@ input[type="search"] {
   text-align: center;
 }
 
-/* 4. SPRITE DO POKÉMON: Centralizada dentro da tela cinza */
+
 .pokemon__image {
   position: absolute;
   top: 180px;
@@ -79,7 +79,7 @@ input[type="search"] {
   z-index: 5;
 }
 
-/* 5. NOME E NÚMERO DO POKÉMON: Posicionado dentro da tela cinza (parte inferior) */
+
 .pokemon__data,
 h1 {
   position: absolute;
@@ -99,7 +99,7 @@ h1 {
   text-transform: capitalize;
 }
 
-/* 6. BOTÕES PREV / NEXT: Posicionados no painel inferior do aparelho */
+
 .buttons,
 div:has(.button) {
   position: absolute;
